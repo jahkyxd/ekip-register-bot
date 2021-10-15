@@ -1,0 +1,32 @@
+{
+    "bot": {
+        "owner": ["618444525727383592"],
+        "prefix": "",
+        "token": ""
+    },
+    "registration": {
+        "GuilDTag": "",
+        "GuildDiscrim": "",
+        "man": "",
+        "woman": "",
+        "unregistered": [],
+        "purchase": true,
+        "susoeciosnickname": "",
+        "suspecios": "",
+        "autonickname": ""
+    },
+    "roles": {
+        "booster": "",
+        "vip": "",
+        "team": ""
+    },
+    "channels": {
+        "welcomechannel": "",
+        "chat": "",
+        "taglog": ""
+    },
+    "Guild": {
+        "GuildID": "",
+        "GuilDName": ""
+    }
+}
