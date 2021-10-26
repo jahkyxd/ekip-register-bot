@@ -7,14 +7,10 @@ module.exports = {
     execute: async (client, message, args, embed, author, channel, guild) => {
         var member = message.mentions.users.first() || guild.members.cache.get(args[0]);
         var name = args[1];
-        var age = args[2];
         const names = db.get(`isimler_${member.id}`)
         if (!message.member.roles.cache.has(config.registration.staff) && !message.member.hasPermission("ADMINISTRATOR")) return channel.send(embed.setDescription("Ne yazık ki komutu kullanan kişide yetki yok"));
         if (!member) return channel.send(embed.setDescription("Lütfen bir kullanıcıyı etiketle."));
         if (!name) return channel.send(embed.setDescription("Lütfen kullanıcı için bir isim belirt."));
-        if (!age) return channel.send(embed.setDescription("Lütfen kullanıcı için bir yaş belirt."));
-        if (isNaN(age)) return message.channel.send(embed.setDescription("Lütfen belirttiğin yaş rakamlardan oluşsun"))
-        if (age < config.registration.minage) return message.channel.send(embed.setDescription("Kullanıcı için belirtilen yaş minimum yaştan küçük!"))
         if (config.registration.purchase) {
             if (!member.username.includes(config.registration.GuilDTag) && !member.roles.cache.has(config.roles.viprole && config.roles.boosterrole && config.roles.musiciansrole && config.roles.designerrole)) {
                 return message.channel.send(embed.setDescription(`Kullanıcının kayıt olabilmesi için boost basmalı veya tag almalı! (${config.registration.GuilDTag})`))
