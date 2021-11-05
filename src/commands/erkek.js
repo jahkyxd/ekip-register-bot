@@ -9,7 +9,6 @@ module.exports = {
     execute: async (client, message, args, embed, author, channel, guild) => {
         const member = message.mentions.users.first() || guild.members.cache.get(args[0]);
         const name = args[1]
-        const names = db.get(`isimler_${member.id}`)
         if (!message.member.roles.cache.has(config.registration.staff) && !message.member.hasPermission("ADMINISTRATOR")) return channel.send(embed.setDescription("Ne yazık ki komutu kullanan kişide yetki yok"));
         if (!member) return channel.send(embed.setDescription("Lütfen bir kullanıcıyı etiketle."));
         if (!name) return channel.send(embed.setDescription("Lütfen kullanıcı için bir isim belirt."));
@@ -18,6 +17,7 @@ module.exports = {
                 return channel.send(embed.setDescription(`Kullanıcının kayıt olabilmesi için boost basmalı veya tag almalı! (\`${config.registration.GuilDTag}\`&\`${config.registration.GuildDiscrim}\`)`))
             }
         }
+        const names = db.get(`isimler_${member.id}`)
         await guild.members.cache.get(member.id).setNickname(`${config.registration.GuilDTag} ${name}`);
         db.add(`erkek_${author.id}`, 1)
         db.add(`toplam_${author.id}`, 1)
